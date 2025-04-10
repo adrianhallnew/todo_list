@@ -28,6 +28,8 @@ This is a Django-based web application developed as part of my learning and prac
 ```bash
 git clone https://github.com/adrianhallnew/todo_list.git
 
-*## License*
+---
+
+## License
 
 This project is licensed under the [MIT License](LICENSE).
