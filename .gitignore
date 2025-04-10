@@ -11,7 +11,7 @@ db.sqlite3
 *.log
 
 # Virtual Environment
-MyVenv/
+myVenv/
 
 # IDE / Editor config
 .vscode/
