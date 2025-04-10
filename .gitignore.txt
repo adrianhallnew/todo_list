@@ -1,0 +1,26 @@
+# Python
+*.pyc
+__pycache__/
+
+# Django specific
+db.sqlite3
+/media/
+/static/
+/.env
+.env.*
+*.log
+
+# Virtual Environment
+MyVenv/
+
+# IDE / Editor config
+.vscode/
+.idea/
+
+# OS Specific
+.DS_Store
+Thumbs.db
+
+# Migrations (Optional)
+*/migrations/__pycache__/
+*.sqlite3
