@@ -1,0 +1,71 @@
+{% extends 'todoApp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="header-container">
+        <h1 class="mt-4 mb-4">Todo List</h1>
+        
+        {% if user.is_authenticated %}
+            <div class="logout-container">
+                <span class="me-3">Welcome, {{ user.username }}</span>
+                <a href="{% url 'logout' %}" class="btn btn-outline-danger btn-sm">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        {% endif %}
+    </div>
+    
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <a href="{% url 'add_todo' %}" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Add New Todo
+            </a>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            {% if todos %}
+                <ul class="list-group">
+                    {% for todo in todos %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                {% if todo.completed %}
+                                    <span class="text-decoration-line-through">{{ todo.title }}</span>
+                                {% else %}
+                                    <span>{{ todo.title }}</span>
+                                {% endif %}
+                                
+                                {% if todo.description %}
+                                    <p class="text-muted small mb-0">{{ todo.description }}</p>
+                                {% endif %}
+                                
+                                {% if todo.due_date %}
+                                    <small class="text-muted">Due: {{ todo.due_date }}</small>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="btn-group">
+                                <a href="{% url 'toggle_todo' todo.id %}" class="btn btn-sm {% if todo.completed %}btn-success{% else %}btn-outline-success{% endif %}">
+                                    <i class="fas {% if todo.completed %}fa-check-circle{% else %}fa-circle{% endif %}"></i>
+                                </a>
+                                <a href="{% url 'update_todo' todo.id %}" class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="{% url 'delete_todo' todo.id %}" class="btn btn-sm btn-outline-danger">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="alert alert-info">
+                    You don't have any tasks yet. Click "Add New Todo" to create one.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
