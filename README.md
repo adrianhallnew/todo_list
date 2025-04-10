@@ -1,0 +1,1 @@
+Built a To-Do List web application using Django, featuring user authentication, task management (create, update, delete), and a clean, responsive interface. Focused on CRUD operations, database handling, and Django's templating system.
